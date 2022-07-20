@@ -10,6 +10,7 @@ const Result=styled.div`
     margin-top:30px;
     border:1px dashed #ccc;
     padding:20px;
+    background-color:#fafafa;
 `;
 const H1=styled.h1`
     margin:20px 0;
@@ -17,6 +18,9 @@ const H1=styled.h1`
 `;
 const Image=styled.img`
     max-width:300px;
+`;
+const H2=styled.h2`
+    color:grey;
 `
 
 const Component=observer(()=>{
@@ -104,17 +108,17 @@ const Component=observer(()=>{
                 ImageStore.serverFile ? <Result>
                     <H1>上传结果</H1>
                     <dl>
-                        <dt>线上地址</dt>
+                        <H2>线上地址:</H2>
                         <dd>
                             <a target="_blank" herf={ImageStore.serverFile.attributes.url.attributes.url}>{ImageStore.serverFile.attributes.url.attributes.url}</a>
                         </dd>
-                        <dt>文件名</dt>
+                        <H2>文件名:</H2>
                         <dd>{ImageStore.filename}</dd>
-                        <dt>图片预览</dt>
+                        <H2>图片预览:</H2>
                         <dd>
                             <Image src={ImageStore.serverFile.attributes.url.attributes.url}/>
                         </dd>
-                        <dt>更多尺寸</dt>
+                        <H2>更多尺寸:</H2>
                         <dd>
                             <input ref={ref1} onChange={bindWidthChange} placeholder='最大宽度(可选)'/>
                             <input ref={ref2} onChange={bindHeightChange} placeholder='最大高度(可选)'/>
