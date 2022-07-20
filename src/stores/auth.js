@@ -1,6 +1,9 @@
 import {observable,action, makeObservable} from 'mobx'
 import {Auth} from '../models/index.js'
 import UserStore from './user'
+import { message } from 'antd'
+import HistoryStore from './history'
+import ImageStore from './history'
 
 class AuthStore{
     // 这句代码为了能成功创建监听事件
@@ -28,6 +31,7 @@ class AuthStore{
                     resolve(user)
                 }).catch(err=>{  // 如果失败
                     UserStore.resetUser()
+                    message.error('登陆失败,请检查用户名和密码是否正确')
                     reject(err)
                 })
         })
@@ -41,6 +45,7 @@ class AuthStore{
                     resolve(user)
                 }).catch(err=>{  // 如果失败
                     UserStore.resetUser()  // 注销信息
+                    message.error('注册失败')
                     reject(err)
                 })
         })
@@ -48,6 +53,8 @@ class AuthStore{
     @action logOut(){
         Auth.logOut()
         UserStore.resetUser()
+        HistoryStore.reset()  // 注销页面的时候也重置数据
+        ImageStore.reset()
     }
 }
 

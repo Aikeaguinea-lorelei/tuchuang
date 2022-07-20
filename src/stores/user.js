@@ -1,7 +1,10 @@
-import {observable,action} from 'mobx'
+import {observable,action, makeObservable} from 'mobx'
 import {Auth} from '../models/index.js'
 
 class UserStore{
+    constructor(){
+        makeObservable(this)
+    }
     // 默认状态
     @observable currentUser=null
 

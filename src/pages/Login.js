@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components'
 import { useStores } from '../stores'
 import { useHistory } from 'react-router-dom';
+import Layout from 'antd/lib/layout/layout';
 
 const Wrapper=styled.div`
     max-width:600px;
